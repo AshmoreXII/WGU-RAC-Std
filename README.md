@@ -1,2 +1,2 @@
 # WGU-RAC-Std
-School programming and projects
+School programming and projects!
