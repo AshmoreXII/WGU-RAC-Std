@@ -1,0 +1,31 @@
+Create a Horse table with the following columns, data types, and constraints. NULL is allowed unless 
+'not NULL' is explicitly stated.
+
+    ID - integer with range 0 to 65535, auto increment, primary key
+
+    RegisteredName - variable-length string with max 15 chars, not NULL
+
+    Breed - variable-length string with max 20 chars, must be one of the following: Egyptian Arab, 
+        Holsteiner, Quarter Horse, Paint, Saddlebred
+
+    Height - number with 3 significant digits and 1 decimal place, must be ≥ 10.0 and ≤ 20.0
+
+    BirthDate - date, must be ≥ Jan 1, 2015
+
+Notes: Not all constraints can be tested due to current limitations of MySQL. Your SQL code does not 
+display any results in Develop mode. Use Submit mode to test your code.
+------------------------------------------------------------------------------------------------------
+
+
+-- Your SQL statement goes here 
+CREATE TABLE Horse (
+   ID SMALLINT UNSIGNED AUTO_INCREMENT,
+   RegisteredName VARCHAR(15) NOT NULL,
+   Breed VARCHAR(20),
+   Height DECIMAL (3,1),
+   BirthDate DATE,
+   CONSTRAINT CHK_Breed CHECK (Breed IN ('Egyptian Arab', 'Holsteiner', 'Quarter Horse', 'Paint', 'Saddlebred')),
+   CONSTRAINT CHK_Height CHECK (Height >= 10.0 AND Height <= 20.0),
+   CONSTRAINT CHK_BirthDate CHECK ( BirthDate >= '2015-01-01'),
+   PRIMARY KEY (ID)
+);
