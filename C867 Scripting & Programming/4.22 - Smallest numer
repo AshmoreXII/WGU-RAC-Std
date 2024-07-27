@@ -1,0 +1,42 @@
+Write a program whose inputs are three integers, and whose output is the smallest of the three values.
+
+Ex: If the input is:
+
+7 15 3
+
+the output is:
+
+3
+------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+   
+   /* Type your code here. */
+   int first;
+   int second; 
+   int third; 
+   
+   cin >> first;
+   cin >> second;
+   cin >> third;
+   
+   if (first < second) {
+      if (first < third) {
+         cout << first << endl;
+      } else {
+         cout << third << endl;
+      }
+   } else {
+      if (second < third) {
+         cout << second << endl;
+      } else {
+         cout << third << endl;
+      }
+   }
+
+   return 0;
+}

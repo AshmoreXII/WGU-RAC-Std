@@ -1,0 +1,67 @@
+Define a function named GetWordFrequency that takes a vector of strings and a search word as parameters. 
+Function GetWordFrequency() then returns the number of occurrences of the search word in the vector 
+parameter (case insensitive).
+
+Then, write a main program that reads a list of words into a vector, calls function GetWordFrequency() 
+repeatedly, and outputs the words in the vector with their frequencies. The input begins with an 
+integer indicating the number of words that follow.
+
+Ex: If the input is:
+5 hey Hi Mark hi mark
+
+the output is:
+
+hey 1
+Hi 2
+Mark 2
+hi 2
+mark 2
+
+Hint: Use tolower() to set the first letter of each word to lowercase before comparing.
+
+The program must define and use the following function:
+int GetWordFrequency(vector<string> wordsList, string currWord)
+------------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <vector> 
+#include <string>
+#include <cctype>
+using namespace std;
+
+/* Define your function here */
+int GetWordFrequency (vector<string> wordsList, string currWord) {
+   int counter = 0;
+   for (unsigned int i = 0; i < currWord.length(); ++i) {            //convert every char to lowercase
+      currWord.at(i) = tolower(currWord.at(i));   
+   }
+   for (unsigned int i = 0; i < wordsList.size(); ++i) {
+      for (unsigned int c = 0; c < wordsList.at(i).length(); ++c) {  //convert every char to lowercase
+         wordsList.at(i).at(c) = tolower(wordsList.at(i).at(c));
+      }
+      if (wordsList.at(i) == currWord) {                      //perform comparison and increment return
+         ++counter;
+      }
+   }
+   return counter;
+}
+
+int main() {
+   /* Type your code here */
+   int numInputs;
+   int frequency = 0;
+   cin >> numInputs;
+   
+   vector <string> inputList(numInputs);
+   
+   for (int i = 0; i < numInputs; ++i) {
+      cin >> inputList.at(i);     
+   }
+   
+   for (int i = 0; i < numInputs; ++i) {
+      frequency = GetWordFrequency(inputList, inputList.at(i));
+      cout << inputList.at(i) << " " << frequency << endl;
+   }
+   return 0;
+}

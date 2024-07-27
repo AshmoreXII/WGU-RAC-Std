@@ -1,0 +1,122 @@
+Given main(), complete the Car class (in files Car.h and Car.cpp) with member functions to set and get 
+the purchase price of a car (SetPurchasePrice(), GetPurchasePrice()), and to output the car's 
+information (PrintInfo()).
+
+Ex: If the input is:
+2011
+18000
+2018
+
+where 2011 is the car's model year, 18000 is the purchase price, and 2018 is the current year, the 
+output is:
+
+Car's information:
+  Model year: 2011
+  Purchase price: $18000
+  Current value: $5770
+
+Note: PrintInfo() should use two spaces for indentation.
+------------------------------------------------------------------------------------------------------
+
+                                    //////Car.h//////
+
+#ifndef CARH
+#define CARH
+
+class Car {
+   private:
+      int modelYear; 
+      // TODO: Declare purchasePrice member (int)
+      int purchasePrice;
+      int currentValue;
+   
+   public:
+      void SetModelYear(int userYear);
+
+      int GetModelYear() const;
+   
+      // TODO: Declare SetPurchasePrice() function
+      void SetPurchasePrice(int userPaid);
+   
+      // TODO: Declare GetPurchasePrice() function
+      int GetPurchasePrice() const;
+   
+      void CalcCurrentValue(int currentYear);
+   
+     // TODO: Declare PrintInfo() method to output modelYear, purchasePrice, and 
+     // currentValue
+      void PrintInfo();
+   
+};
+
+#endif
+------------------------------------------------------------------------------------------------------
+
+                                    //////Car.cpp//////
+
+#include <iostream>
+#include <math.h>
+#include "Car.h"
+using namespace std;
+
+void Car::SetModelYear(int userYear){
+   modelYear = userYear;
+}
+
+int Car::GetModelYear() const {
+   return modelYear;
+}
+
+// TODO: Implement SetPurchasePrice() function
+void Car::SetPurchasePrice(int userPaid) {
+   purchasePrice = userPaid;
+}
+
+// TODO: Implement GetPurchasePrice() function
+int Car::GetPurchasePrice() const {
+   return purchasePrice;
+}
+
+void Car::CalcCurrentValue(int currentYear) {
+   double depreciationRate = 0.15;
+   int carAge = currentYear - modelYear;
+      
+   // Car depreciation formula
+   currentValue = (int) 
+      round(purchasePrice * pow((1 - depreciationRate), carAge));
+}
+
+// TODO: Implement PrintInfo() function to output modelYear, purchasePrice, and 
+// currentValue
+void Car::PrintInfo() {
+   cout << "Car's information:" << endl;
+   cout << "  Model year: " << modelYear << endl;
+   cout << "  Purchase price: $" << purchasePrice << endl;
+   cout << "  Current value: $" << currentValue << endl;
+}
+------------------------------------------------------------------------------------------------------
+
+                                    //////main.cpp//////
+
+#include <iostream>
+#include "Car.h"
+using namespace std;
+
+int main() {
+   int userYear;
+   int userPrice;
+   int userCurrentYear;
+   Car myCar;
+      
+   cin >> userYear;
+   cin >> userPrice;
+   cin >> userCurrentYear;
+      
+   myCar.SetModelYear(userYear);
+   myCar.SetPurchasePrice(userPrice);
+   myCar.CalcCurrentValue(userCurrentYear);
+      
+   myCar.PrintInfo();
+   
+   return 0;
+}
