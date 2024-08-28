@@ -83,7 +83,8 @@ void Roster::printAverageDaysInCourse(string studentID) {
     for (int i = 0; i < 3; ++i) {
         sum = sum + *(classRosterArray[index]->GetDaysInCourse() + i);
     }
-    cout << classRosterArray[index]->GetFirstName() << " averaged " << sum/3 << " days." << endl;
+    //cout << classRosterArray[index]->GetFirstName() << " averaged " << sum/3 << " days." << endl;  
+    cout << studentID << " averaged " << sum/3 << " days." << endl;
 };
 
 void Roster::printInvalidEmails() {
